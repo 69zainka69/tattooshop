@@ -130,15 +130,28 @@
                     <input type="text" value="{{ $basket->adress_2 }}" name="adress_2" class="form-control" id="adress_2" required>
                   </div>
 
-                  <div style="@php if($basket->status!=300){echo "display:none";} @endphp" class="form-group">
-                    <label for="ttn"></label>
-                    <input type="number" value="" name="ttn" class="form-control" id="ttn" required>
+                  <div style="@php if($basket->status==200){echo "display:block";}
+                  else echo "display:none";
+                   @endphp" class="form-group">
+                    <label for="ttn">ТТН отпраленной продукции</label>
+                    <input type="number" value="" name="ttn" class="form-control" id="ttn" placeholder="Введите ТТН" required>
                   </div>
 
                   <p style="@php if($basket->status<350){echo "display:none";} @endphp">ТТН: {{ $basket->ttn }}</p>
 
                   <div style="@php if($basket->status==400){echo "display:none";} @endphp" class="card-footer">
-                  <button type="submit" class="btn btn-primary">Перейти к следующему шагу</button>
+                  <button type="submit" class="btn btn-primary">
+                  
+                  @if($basket->status==100)
+                    Комплектовать заказ
+                  @endif
+                   @if($basket->status==200)
+                    Отправить заказ
+                  @endif
+                   @if($basket->status==300)
+                    Товар продан | Деньги получены
+                  @endif
+                  </button>
                 </div>
               </form>
 
@@ -183,13 +196,16 @@
                     <label for="adress_1"></label>
                     <input type="text" value="{{ $basket->adress_1 }}" name="adress_1" class="form-control" id="adress_1" required>
                   </div>
+                  
                    <div style="display:none;" class="form-group">
                     <label for="adress_2"></label>
                     <input type="text" value="{{ $basket->adress_2 }}" name="adress_2" class="form-control" id="adress_2" required>
                   </div>
 
                   <div style="@php if($basket->status==350){echo "display:none";} @endphp" class="card-footer">
-                  <button type="submit" class="btn btn-primary">Заморозить</button>
+                 @if($basket->status== 400) 
+                 @else <button type="submit" class="btn btn-primary">Товар под реализацию</button>
+                 @endif
                 </div>
               </form>
               

@@ -198,7 +198,7 @@
 
 
         <div style="background:#fd5858; margin-top:50px;" id="comlited">
-            <h2 style="text-align:center;">Замороженные средства за товар</h2>
+            <h2 style="text-align:center;">Товары под реализацию</h2>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>

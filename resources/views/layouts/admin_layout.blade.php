@@ -169,7 +169,13 @@
             "icon" => "fa-book",
             ]
             ]
-          ]
+          ],
+          9 => [
+            "url" => route('slidershome.index'),
+            "title" => "Работа со слайдером",
+            "icon" => "fa-image",
+            "children" => [],
+          ],
         ]
       @endphp
 
