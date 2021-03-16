@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 
-@section('title', 'Аналитика | Dashboard')
+@section('title', 'Продажа товара | Dashboard')
 
 @section('content')
 
@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Аналитика</h1>
+            <h1 class="m-0 text-dark">Продажа товара</h1>
           </div><!-- /.col -->
           @if (session('success'))
         <div class="alert alert-success" role="alert">

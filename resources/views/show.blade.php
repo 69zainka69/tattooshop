@@ -265,7 +265,7 @@ $kupon = htmlspecialchars($_COOKIE["kupon"]);
                                     <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
                                 </div>
                             </div>
-                            <div data-id="{{$item->id}}" class="button cart_button"><a href="#">купить</a></div>
+                            <div data-id="{{$item->id}}" class="mt-3 btn btn-primary">КУПИТЬ</div>
                         </div>
                                             <div class="tabs">
                                                 <div class="tab-labels">
