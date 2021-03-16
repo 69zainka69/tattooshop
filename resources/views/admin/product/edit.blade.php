@@ -43,7 +43,7 @@
                   </div>
 
                    <div class="form-group">
-                    <label for="exampleInputEmail1">(Короткое) СЕО описание товара</label>
+                    <label for="exampleInputEmail1">(Короткое) СЕО описание товара - можно просто копировать первые две строчки из описания. Должно быть до 170-ти символов</label>
                     <input type="text" value="{{ $product['metadesc']}}" name="metadesc" class="form-control" id="exampleInputEmail1" required placeholder="Введите описание товара">
                   </div>
 
@@ -58,7 +58,7 @@
                   </div>
                    <div class="form-group">
                     <label for="size">Размер</label>
-                    <input type="number" value="{{ $product['size']}}" name="size" class="form-control" id="size" required >
+                    <input type="text" value="{{ $product['size']}}" name="size" class="form-control" id="size" required >
                   </div>
 
                   <div class="form-group">
@@ -97,7 +97,9 @@
 
 
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Введите  URL-Alias (ссылку) товара</label>
+                    <label for="exampleInputEmail1">Введите  URL-Alias (ссылку) товара (латинскими символами написать название), например: stol_tatuirovshchika <br>
+                      Текст должен быть без пробелов, вместо пробелов можно использовать _
+                    </label>
                     <input type="text" value="{{ $product['url']}}" name="url" class="form-control" id="exampleInputEmail1" required placeholder="Введите ссылку на товар: tovar">
                   </div>
 
