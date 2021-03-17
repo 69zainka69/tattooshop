@@ -1,7 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'Блог Магазина Tattoo Room')
-@section('description', 'Блог Tattoo Room - магазин для тату-мастера')
+@section('title')
+Акция {{$akcii->title}} Магазина Tattoo Room
+@endsection
+@section('description')
+{{$akcii->description}} Tattoo Room - магазин для тату-мастера
+@endsection
 
 @section('head')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600&display=swap" rel="stylesheet">
@@ -10,7 +14,12 @@
 <link href="/css/mobile.css" rel="stylesheet">
 <link href="/css/cheatsheet.css" rel="stylesheet">
 @endsection
-
+<style>
+.leftimg {
+    float:left; 
+    margin: 10px 10px 10px 0; 
+   }
+</style>
 
 @section('slide')
 <div id="myCarousel" class="carousel slide" style="margin-top: 1rem;" data-bs-ride="carousel">
@@ -79,47 +88,18 @@ foreach ($sliders as $slide) {
 
 <div class="album py-5 bg-light" style="background-color: #ffffff !important;">
     <div class="container">
-        <div class="blocktitle">
-            <p class="title-block parentcategory pagetitle">Статьи</p>
-
+ 
+        <h1 style="text-align: center;">{{$akcii->title}}</h1>
+       @if (isset($akcii->img)) <img class="leftimg" alt="{{$akcii->title}}" src="{{$akcii->img}}">@endif{!! $akcii->content !!}</div>
+                </div>
+            </div>
+           
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            @foreach ($blogs as $blog)
-            
-            <div class="col">
-                <div class="card shadow-sm" style="text-align:center;">
-                    
-                    
-                    
-                    @if(isset($blog['img']))<img style="margin-left:auto; margin-right:auto;" alt="{{$blog->title}}" src="{{$blog['img']}}" width="200" height="200">
-                    @else <img style="margin-left:auto; margin-right:auto;" alt="{{$blog->title}}" src="/img/no_image.png" width="200" height="200"> 
-                
-                    @endif
 
-
-
-
-                    <div class="card-body">
-                        <div class="details_name" data-id="{{$blog->id}}">
-                            <p style="text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;" class="card-text pagetitle">{{$blog->title}}</p>
-                        </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-            <a href="{{route('showArticle', [$blog->url])}}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
-                                </div></div></div></div></div>
-            @endforeach
-        </div>
     </div>
+
 </div>
 <!-- END CARS TOVAR  -->
 
 @endsection
-@section('js')
-<script>
-    window.addToCartRoute = "{{route('addToCart')}}";
 
-</script>
-<script src="/js/cart.js"></script>
-@endsection

@@ -21,7 +21,6 @@ class IndexController extends Controller
             'products' => $products,
             'user' => $user,
             'sliders' => $sliders,
-
                                   ]);
     }
 }

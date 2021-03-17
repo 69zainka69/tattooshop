@@ -17,12 +17,14 @@ use App\Http\Controllers\IdentifyController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\Admin\SlideUploadController;
+use App\Http\Controllers\Admin\AkciiUploadController;
 
 
 Route::get('/o_nas', [OnasController::class, 'index'])->name('onas');
 Route::get('/kontakty', [KontaktyController::class, 'index'])->name('kontakty');
 Route::get('/kypit', [KypitController::class, 'index'])->name('kypit');
 Route::get('/aktsii', [AkciiController::class, 'index'])->name('aktsii');
+Route::get('/aktsii/{url}', [AkciiController::class, 'show'])->name('showAktsii');
 Route::get('/vozvrat', [VozvratController::class, 'index'])->name('vozvrat');
 Route::get('/politika', [PolitikaController::class, 'index'])->name('politika');
 Route::get('/', [IndexController::class, 'index']);
@@ -61,12 +63,15 @@ Route::middleware(['role:sclad|admin'])->prefix('admin')->group(function () {
     Route::resource('sale', 'Admin\SaleController');
     Route::resource('blogs', 'Admin\BlogsController');
     Route::resource('slidershome', 'Admin\SlidersHomeController');
+    Route::resource('akciihome', 'Admin\AkciiHomeController');
     Route::get('/money-chart/{id}', 'Admin\ScladController@moneyChart')->name('moneyChart');
     Route::get('/amount-chart/{id}', 'Admin\ScladController@amountChart')->name('amountChart');
     Route::get('/image-upload', 'ImageUploadController@imageUpload')->name('image.upload');
     Route::post('/image-upload', 'ImageUploadController@imageUploadPost')->name('image.upload.post');
     Route::get('/slide-upload', 'Admin\SlideUploadController@imageUpload')->name('slide.upload');
     Route::post('/slide-upload', 'Admin\SlideUploadController@imageUploadPost')->name('slide.upload.post');
+    Route::get('/akcii-upload', 'Admin\AkciiUploadController@imageUpload')->name('akcii.upload');
+    Route::post('/akcii-upload', 'Admin\AkciiUploadController@imageUploadPost')->name('akcii.upload.post');
 
 });
 

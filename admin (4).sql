@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 15 2021 г., 15:14
+-- Время создания: Мар 17 2021 г., 08:01
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.2.34
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- База данных: `admin`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `qwert_akciis`
+--
+
+CREATE TABLE `qwert_akciis` (
+  `id` bigint NOT NULL,
+  `img` text NOT NULL,
+  `url` text NOT NULL,
+  `content` text NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `qwert_akciis`
+--
+
+INSERT INTO `qwert_akciis` (`id`, `img`, `url`, `content`, `title`, `description`) VALUES
+(1, '/img/catalog/2to1.jpg', '2to1', '<p>sdfdhgfhdgd ghdfg hdgf hd ndfkgjhnfgjhngfkjhgfkjhndfkjghndfghdghd \r\n dghdghlkdgfhl  a fmsdlkgdflgns d sdkfhslkdfnhsk </p>\r\n<p>fdhdfkhjs khns dlhn sdl dnhlks dnfhlkd l </p>', 'Акция 2 по цене одного', 'fdhgfhdgd ghdfg hdgf hd ndfkgjhnfgjhngfkjhgfkjhndfkjghndfghdghd \r\n dghdghlkdgfhl  a fmsdlkgdflgns d sdkfhslkdfnhsk');
 
 -- --------------------------------------------------------
 
@@ -1452,7 +1474,8 @@ CREATE TABLE `qwert_baskets` (
 INSERT INTO `qwert_baskets` (`id`, `sclad_id`, `user_id`, `first_name`, `last_name`, `phone`, `email`, `adress_1`, `adress_2`, `status`, `ttn`, `parlor_id`) VALUES
 (28, 2, 4, 'Гена', 'Гена', '4534534', 'godmk1001@gmail.com', '6dbe932e-1aad-11ea-8c15-0025b502a06e', '1b925188-1e7d-11ea-ac3b-0025b502a04e', 350, NULL, NULL),
 (29, 7, 4, 'Гена', 'Гена', '3454353', 'dfdh@fdgs.com', 'd30a9675-7404-11e5-8d8d-005056887b8d', 'd30a9688-7404-11e5-8d8d-005056887b8d', 400, '21342342', NULL),
-(30, 1, 4, 'Гена', 'Гена', '3454353', 'dfdh@fdgs.com', 'd30a9675-7404-11e5-8d8d-005056887b8d', 'd30a9688-7404-11e5-8d8d-005056887b8d', 200, NULL, NULL);
+(30, 1, 4, 'Гена', 'Гена', '3454353', 'dfdh@fdgs.com', 'd30a9675-7404-11e5-8d8d-005056887b8d', 'd30a9688-7404-11e5-8d8d-005056887b8d', 200, NULL, NULL),
+(31, 7, 3, 'admin', 'admins', '+3805050505', 'admin@admin.com', 'db5c88c7-391c-11dd-90d9-001a92567626', '9dc4318a-0bf2-11e4-acce-0050568002cf', 100, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1480,7 +1503,8 @@ INSERT INTO `qwert_basket_products` (`id`, `basket_id`, `product_id`, `count`, `
 (44, 29, 1381, '2.00', '11000.00', 'UAH'),
 (45, 30, 1, '1.00', '0.00', 'UAH'),
 (46, 30, 3, '1.00', '0.00', 'UAH'),
-(47, 30, 5, '1.00', '0.00', 'UAH');
+(47, 30, 5, '1.00', '0.00', 'UAH'),
+(48, 31, 1381, '1.00', '5500.00', 'UAH');
 
 -- --------------------------------------------------------
 
@@ -4597,6 +4621,28 @@ INSERT INTO `qwert_sclads` (`id`, `title`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `qwert_sliders_homes`
+--
+
+CREATE TABLE `qwert_sliders_homes` (
+  `id` bigint NOT NULL,
+  `url` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `img` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `lrc` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `qwert_sliders_homes`
+--
+
+INSERT INTO `qwert_sliders_homes` (`id`, `url`, `img`, `lrc`) VALUES
+(1, '/aktsii/2to1', '/img/slid/slide3.jpg', 'text-start'),
+(2, '#', '/img/slid/slide2.webp', ''),
+(3, '#', '/img/slid/slide1.jpg', 'text-end');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `qwert_suppliers`
 --
 
@@ -4650,7 +4696,7 @@ CREATE TABLE `qwert_users` (
 --
 
 INSERT INTO `qwert_users` (`id`, `first_name`, `last_name`, `phone`, `email`, `adress_1`, `adress_2`, `vean`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'admin', 'admins', '+3805050505', 'admin@admin.com', 'db5c88c7-391c-11dd-90d9-001a92567626', '9dc4318a-0bf2-11e4-acce-0050568002cf', NULL, NULL, '$2y$10$Gv3Cn0bmmO.yk28QGMAvHOsEnldc3DOHE1jMNPddhdF2aO1IzkGEm', NULL, NULL, 'cFFYrAU5528d4cNnX9djPH05dZJz7sDKCk9TG9xqcqvYetA3PwLZkJfLWXKc', '2021-03-01 03:42:15', '2021-03-15 05:30:03'),
+(3, 'admin', 'admins', '+3805050505', 'admin', 'db5c88c7-391c-11dd-90d9-001a92567626', '9dc4318a-0bf2-11e4-acce-0050568002cf', NULL, NULL, '$2y$10$Gv3Cn0bmmO.yk28QGMAvHOsEnldc3DOHE1jMNPddhdF2aO1IzkGEm', NULL, NULL, 'ThZgx3ZXAS2g0Z3rPfMGgpFfsXYJCCxvv2sTTKRgaZdX6UcGYansjKfNBt0l', '2021-03-01 03:42:15', '2021-03-15 05:30:03'),
 (4, 'Гена', 'Гена', NULL, 'Гена', NULL, NULL, NULL, NULL, '$2y$10$l/wQ6yiGcXmMhXzY6oISku/4UewITyCihByGAYjGhj5jgtCyrnXpy', NULL, NULL, NULL, '2021-03-13 05:33:36', '2021-03-13 05:33:36'),
 (5, 'Анастасия', 'Шевченко', NULL, 'Шевченко_Анастасия', NULL, NULL, NULL, NULL, '$2y$10$l/wQ6yiGcXmMhXzY6oISku/4UewITyCihByGAYjGhj5jgtCyrnXpy', NULL, NULL, NULL, '2021-03-13 05:33:36', '2021-03-13 05:33:36'),
 (6, 'Евгений', 'Ковязин', NULL, 'Ковязин_Евгений', NULL, NULL, NULL, NULL, '$2y$10$l/wQ6yiGcXmMhXzY6oISku/4UewITyCihByGAYjGhj5jgtCyrnXpy', NULL, NULL, NULL, '2021-03-13 05:33:36', '2021-03-13 05:33:36'),
@@ -4687,11 +4733,19 @@ INSERT INTO `qwert_users_sclads` (`id`, `sclad_id`, `user_id`) VALUES
 (18, 2, 6),
 (19, 7, 7),
 (20, 5, 8),
-(21, 4, 9);
+(21, 4, 9),
+(22, 5, 9),
+(23, 4, 8);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `qwert_akciis`
+--
+ALTER TABLE `qwert_akciis`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `qwert_amounts`
@@ -4821,6 +4875,12 @@ ALTER TABLE `qwert_sclads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `qwert_sliders_homes`
+--
+ALTER TABLE `qwert_sliders_homes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `qwert_suppliers`
 --
 ALTER TABLE `qwert_suppliers`
@@ -4847,6 +4907,12 @@ ALTER TABLE `qwert_users_sclads`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `qwert_akciis`
+--
+ALTER TABLE `qwert_akciis`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `qwert_amounts`
 --
 ALTER TABLE `qwert_amounts`
@@ -4856,13 +4922,13 @@ ALTER TABLE `qwert_amounts`
 -- AUTO_INCREMENT для таблицы `qwert_baskets`
 --
 ALTER TABLE `qwert_baskets`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT для таблицы `qwert_basket_products`
 --
 ALTER TABLE `qwert_basket_products`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT для таблицы `qwert_blogs`
@@ -4931,6 +4997,12 @@ ALTER TABLE `qwert_sclads`
   MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT для таблицы `qwert_sliders_homes`
+--
+ALTER TABLE `qwert_sliders_homes`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT для таблицы `qwert_suppliers`
 --
 ALTER TABLE `qwert_suppliers`
@@ -4946,7 +5018,7 @@ ALTER TABLE `qwert_users`
 -- AUTO_INCREMENT для таблицы `qwert_users_sclads`
 --
 ALTER TABLE `qwert_users_sclads`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

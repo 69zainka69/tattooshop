@@ -319,8 +319,8 @@
                     <li><a class="link-secondary tel" href="tel:+380636488091">(+38) 063 648 80 91</a></li>
                     <li><a class="link-secondary tel" href="mailto:tattooshop.vean@gmail.com">@gmail.com</a></li>
                      
-                    <li><a class="link-secondary fa fa-clock-o">с 11-00 до 19-00</a></li>
-                    <li><a class="link-secondary fa fa-forward">Без выходных</a></li>
+                    <li><a style="text-decoration:none;" class="link-secondary tel fa fa-clock-o"> с 11-00 до 19-00</a></li>
+                    <li><a style="text-decoration:none;" class="link-secondary tel fa fa-forward"> Без выходных</a></li>
                     <li><a class="tel" href="https://g.page/vean-hostel?share" tabindex="_blanks" target="_blanks" class=""><i class="fa fa-map-marker" aria-hidden="true"></i> г.Бердянск, ул.Итальянская, 31-А</a></li>
                     <li class="socicons">
                         <div class="social instagram">

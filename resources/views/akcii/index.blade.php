@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Блог Магазина Tattoo Room')
-@section('description', 'Блог Tattoo Room - магазин для тату-мастера')
+@section('title', 'Акции Магазина Tattoo Room')
+@section('description', 'Акции Tattoo Room - магазин для тату-мастера')
 
 @section('head')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600&display=swap" rel="stylesheet">
@@ -84,7 +84,7 @@ foreach ($sliders as $slide) {
 
         </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            @foreach ($blogs as $blog)
+            @foreach ($akcii as $blog)
             
             <div class="col">
                 <div class="card shadow-sm" style="text-align:center;">
@@ -107,7 +107,7 @@ foreach ($sliders as $slide) {
                         </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-            <a href="{{route('showArticle', [$blog->url])}}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+            <a href="{{route('showAktsii', [$blog->url])}}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
                                 </div></div></div></div></div>
             @endforeach
         </div>

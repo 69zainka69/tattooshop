@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class SlidersAkciiController extends Controller
+use App\Akcii;
+class AkciiHomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,11 @@ class SlidersAkciiController extends Controller
      */
     public function index()
     {
-        //
+        $sliders = Akcii::orderBy('id', 'desc')->get();
+
+        return view('admin.slider.index',[
+            'sliders' => $sliders
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class SlidersAkciiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.akcii.addslide');
     }
 
     /**
@@ -57,7 +61,11 @@ class SlidersAkciiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sliders = Akcii::find($id);
+
+        return view('admin.akcii.edit',[
+            'sliders' => $sliders,
+        ]);
     }
 
     /**
@@ -69,7 +77,12 @@ class SlidersAkciiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sliders = Akcii::where(['id' => $id])->first();
+        $sliders->url = $request->url;
+        $sliders->lrc = $request->lrc;
+        $sliders->save();
+        
+        return redirect()->back()->withSuccess('Слайд успешно обновлен');
     }
 
     /**
@@ -80,6 +93,8 @@ class SlidersAkciiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Akcii::find($id);
+        $item->delete();
+        return redirect()->back()->withSuccess('Слайд успешно удален');
     }
 }
