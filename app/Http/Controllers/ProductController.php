@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Prices;
+use Illuminate\Support\Facades\DB;
 use App\Category;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
@@ -26,8 +28,21 @@ class ProductController extends Controller
 
         if(isset($request->orderBy)){
             if ($request->orderBy == 'price'){
-                $tovars = Product::where('category_id', $cat->id)->OrderBy('price')->paginate($paginate);
+                $domain = $_SERVER['SERVER_NAME'];
+                $currency = $_COOKIE['currency'] ?? 'UAH';
+                // $tovars = Product::where('category_id', $cat->id)->OrderBy('price')->paginate($paginate);
+                $tovars = Product::select('products.*', \DB::raw('
+                        select product_id, price_shop
+                        from qwert_prices prc1
+                        where prc1.created_at = (
+                            select max(created_at) from qwert_prices prc2 
+                            where prc1.currency = prc2.currency AND prc1.product_id = prc2.product_id
+                        ) AND currency = ? AND domain = ?', [$currency, $domain]))
+                    ->leftJoin('prices', 'prices.product_id', '=', 'products.id')
+                    ->OrderBy('price_shop')
+                    ->paginate($paginate);
             }
+
             if ($request->orderBy == 'name'){
                 $tovars = Product::where('category_id', $cat->id)->OrderBy('title')->paginate($paginate);
             }

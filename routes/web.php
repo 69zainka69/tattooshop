@@ -18,6 +18,8 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\Admin\SlideUploadController;
 use App\Http\Controllers\Admin\AkciiUploadController;
+use App\Http\Controllers\Admin\BlogsUploadController;
+
 
 
 Route::get('/o_nas', [OnasController::class, 'index'])->name('onas');
@@ -72,6 +74,8 @@ Route::middleware(['role:sclad|admin'])->prefix('admin')->group(function () {
     Route::post('/slide-upload', 'Admin\SlideUploadController@imageUploadPost')->name('slide.upload.post');
     Route::get('/akcii-upload', 'Admin\AkciiUploadController@imageUpload')->name('akcii.upload');
     Route::post('/akcii-upload', 'Admin\AkciiUploadController@imageUploadPost')->name('akcii.upload.post');
+    Route::get('/blogs-upload', 'Admin\BlogsUploadController@imageUpload')->name('blogs.upload');
+    Route::post('/blogs-upload', 'Admin\BlogsUploadController@imageUploadPost')->name('blogs.upload.post');
 
 });
 

@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 
-@section('title', 'Добавить фото акции | Dashboard')
+@section('title', 'Добавить фото блога | Dashboard')
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Добавить фото акции</h1>
+            <h1 class="m-0 text-dark">Добавить фото блога</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
 
@@ -28,17 +28,17 @@
 <div class="col-lg-12">
 <div class="card card-primary">
 
- <a class="btn btn-success btn-sm" href="{{ route('akciihome.index') }}">
+ <a class="btn btn-success btn-sm" href="{{ route('blogs.index') }}">
           <i class="fas fa-plus">
-          </i>Вернуться к акциям</a>
+          </i>Вернуться к статьям</a>
 
               <div class="card-header">
-                <h3 class="card-title">Загрузка фото акции</h3>
+                <h3 class="card-title">Загрузка фото блога</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
 
-              <form action="{{ route('akcii.upload.post') }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('blogs.upload.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
   
@@ -47,7 +47,7 @@
                 </div>
 
                 <div style="display:none" class="form-group">
-                    <label for="id">Акция</label>
+                    <label for="id">Статья</label>
                     <input type="text" value="@php $url = $_SERVER['QUERY_STRING']; echo $url; @endphp" id="id" name="id"/>
                   </div>
 

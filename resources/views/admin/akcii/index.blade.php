@@ -1,7 +1,7 @@
 @extends('layouts.admin_layout')
 
 
-@section('title', 'Все статьи | Dashboard')
+@section('title', 'Все акции | Dashboard')
 
 @section('content')
 @section('content')
@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Статьи</h1>
+            <h1 class="m-0 text-dark">Акции</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -23,14 +23,14 @@
 
  <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Статьи</h3>
+          <h3 class="card-title">Акции</h3>
           
 
           <div class="card-tools">
-           <a class="btn btn-info btn-sm" href="{{ route('blogs.create')}}">
+           <a class="btn btn-info btn-sm" href="{{ route('akciihome.create')}}">
                               <i class="fas fa-pencil-alt">
                               </i>
-                              Добавить Статью
+                              Добавить Акцию
                           </a>
           </div>
         </div>
@@ -56,34 +56,34 @@
               </thead>
               <tbody>
 
-              @foreach($articles as $article)
+              @foreach($akcii as $item)
                              
                   <tr>
                       <td>
-                          {{$article['id']}}
+                          {{$item['id']}}
                       </td>
                       <td>
-                        <img width="50" alt="{{ $article->title }}" src="{{ $article->img }}">
+                        <img width="50" alt="{{ $item->title }}" src="{{ $item->img }}">
                       </td>
                       <td>
-                               {{$article->title}}   
+                               {{$item->title}}   
                       </td>
                      
                      <td class="project-actions text-right">
                        
-                      <a class="btn btn-success btn-sm" href="{{ route('blogs.upload', $article->id )}}">
+                      <a class="btn btn-success btn-sm" href="{{ route('akcii.upload', $item->id )}}">
           <i class="fas fa-pencil-alt">
           </i>
           Добавить картинку
              </a>
 
              
-                <a class="btn btn-info btn-sm" href="{{ route('blogs.edit', $article['id'])}}">
+                <a class="btn btn-info btn-sm" href="{{ route('akciihome.edit', $item['id'])}}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Редактировать
                           </a>
-                         <form action="{{route('blogs.destroy', $article['id'])}}" method="POST" style="display:inline-block;">
+                          <form action="{{route('akciihome.destroy', $item['id'])}}" method="POST" style="display:inline-block;">
                              @csrf
                              @method('DELETE')
                               <button type="submit" class="btn btn-danger btn-sm delete-btn">

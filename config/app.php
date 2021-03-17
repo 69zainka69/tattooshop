@@ -180,6 +180,7 @@ return [
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Daaner\NovaPoshta\NovaPoshtaServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -235,6 +236,7 @@ return [
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'NovaPoshta' => Daaner\NovaPoshta\Facades\NovaPoshta::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

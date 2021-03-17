@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Akcii;
-class AkciiUploadontroller extends Controller
+class AkciiUploadController extends Controller
 {
-    public function imageUpload()
+    public function imageUpload(Request $request)
     {
-        return view('admin.akcii.addphoto');
+
+        $akcii = Akcii::find($request->id);
+
+        return view('admin.akcii.addphoto',[
+            'akcii' => $akcii,
+        ]);
     }
   
     /**
@@ -19,27 +24,16 @@ class AkciiUploadontroller extends Controller
      */
     public function imageUploadPost(Request $request)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-  
-        $imageName = time().'.'.$request->image->extension();  
-   
-        $request->image->move(public_path('images'), $imageName);
-
+       
+    $id = $request['id'];
+    $imageName = time().'.'.$request->image->extension();  
+    $request->image->move(public_path('images'), $imageName);
        $new_photo = "/images/".$imageName;
-
-       $new_image = Akcii(array(
-
-        'img' => $new_photo,
-     
-
-     ));
+       $new_image = Akcii::find($id);
+        $new_image->img =  $new_photo;
          $new_image->save();
  
          return redirect()->back()->withSuccess('Фото акции успешно добавлено');
 
-
-   
     }
 }

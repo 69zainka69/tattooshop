@@ -113,6 +113,8 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Blog::find($id);
+        $item->delete();
+        return redirect()->back()->withSuccess('Слайд успешно удален');
     }
 }

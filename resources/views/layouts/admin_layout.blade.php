@@ -124,19 +124,34 @@
               ]
             ]
           ],
+          5 => [
+            "url" => "#",
+            "title" => "Акции",
+            "icon" => "fa-copy",
+            "children" => [
+              1 => [
+                "url" => route('akciihome.index'),
+                "title" => "Все акции",
+              ],
+              2 => [
+                "url" => route('akciihome.create'),
+                "title" => "Добавить акцию",
+              ]
+            ]
+          ],
           
-          5 => ["url" => route('analytics.index'),
+          6 => ["url" => route('analytics.index'),
             "title" => "Аналитика",
             "icon" => "fa-address-book",
             "children" => [],
           ],
-          6 => [
+          7 => [
             "url" => route('gallery.index'),
             "title" => "Галерея",
             "icon" => "fa-image",
             "children" => [],
           ],
-          7 => [
+          8 => [
             "url" => "#",
             "title" => "Склады",
             "icon" => "fa-balance-scale",
@@ -153,7 +168,7 @@
             ]
             ]
           ],
-          8 => [
+          9 => [
             "url" => "#",
             "title" => "Поставщики",
             "icon" => "fa-book",
@@ -170,7 +185,7 @@
             ]
             ]
           ],
-          9 => [
+          10 => [
             "url" => route('slidershome.index'),
             "title" => "Работа со слайдером",
             "icon" => "fa-image",

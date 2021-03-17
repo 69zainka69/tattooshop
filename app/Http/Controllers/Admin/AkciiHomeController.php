@@ -14,10 +14,10 @@ class AkciiHomeController extends Controller
      */
     public function index()
     {
-        $sliders = Akcii::orderBy('id', 'desc')->get();
+        $akcii = Akcii::orderBy('id', 'desc')->get();
 
-        return view('admin.slider.index',[
-            'sliders' => $sliders
+        return view('admin.akcii.index',[
+            'akcii' => $akcii
         ]);
     }
 
@@ -28,7 +28,7 @@ class AkciiHomeController extends Controller
      */
     public function create()
     {
-        return view('admin.akcii.addslide');
+        return view('admin.akcii.create');
     }
 
     /**
@@ -39,7 +39,24 @@ class AkciiHomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_akcii = new Akcii(array(
+   
+            
+            'title' => $request->title,
+            'description' => $request->description,
+            'url' => $request->url,
+            'content' => $request->content,
+            
+            
+
+         ));
+
+        $new_akcii->save();
+        $new_akcii = $new_akcii->fresh();
+
+      
+
+        return redirect()->back()->withSuccess('Статья успешно опубликованна');
     }
 
     /**
@@ -61,10 +78,10 @@ class AkciiHomeController extends Controller
      */
     public function edit($id)
     {
-        $sliders = Akcii::find($id);
+        $akcii = Akcii::find($id);
 
         return view('admin.akcii.edit',[
-            'sliders' => $sliders,
+            'akcii' => $akcii,
         ]);
     }
 
@@ -77,10 +94,12 @@ class AkciiHomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sliders = Akcii::where(['id' => $id])->first();
-        $sliders->url = $request->url;
-        $sliders->lrc = $request->lrc;
-        $sliders->save();
+        $akcii = Akcii::where(['id' => $id])->first();
+        $akcii->title = $request->title;
+        $akcii->description = $request->description;
+        $akcii->content = $request->content;
+        $akcii->url = $request->url;
+        $akcii->save();
         
         return redirect()->back()->withSuccess('Слайд успешно обновлен');
     }
